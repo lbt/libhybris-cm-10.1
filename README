@@ -1,0 +1,11 @@
+libhybris for CyanogenMod 10.2-based Hardware Adaptions
+=======================================================
+
+This is upstream libhybris built against the CyanogenMod 10.2
+headers based on Android 4.3.x Jelly Bean and packaged for Mer.
+
+See http://wiki.cyanogenmod.org/w/Doc:_Building_Basics on how
+to checkout the CM 10.2 source code for building the HA.
+
+Android headers extracted using:
+libhybris/utils/extract-headers.sh $ANDROID_ROOT android-headers
