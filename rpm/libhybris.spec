@@ -1,7 +1,7 @@
-Name:      libhybris-cm-10.2
+Name:      libhybris-cm-10.2-qcom
 Version:   0.0.0
 Release:   1%{?dist}
-Summary:   Utilize Bionic-based HW adaptations on glibc systems
+Summary:   Utilize Bionic-based HW adaptations on glibc systems (QCOM variant)
 
 Group:	   System
 License:   Apache 2.0
@@ -331,7 +331,8 @@ autoreconf -v -f -i
   --enable-debug \
   --enable-trace \
   --with-android-headers=$(pwd)/../../android-headers \
-  --enable-arch=arm
+  --enable-arch=arm \
+  CFLAGS="-DQCOM_HARDWARE" CXXFLAGS="-DQCOM_HARDWARE"
 
 make
 
