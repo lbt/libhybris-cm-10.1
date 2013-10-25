@@ -17,8 +17,6 @@
 #ifndef ANDROID_INCLUDE_HARDWARE_POWER_H
 #define ANDROID_INCLUDE_HARDWARE_POWER_H
 
-#define HAS_MULTIMEDIA_HINTS
-
 #include <stdint.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
@@ -29,6 +27,7 @@ __BEGIN_DECLS
 
 #define POWER_MODULE_API_VERSION_0_1  HARDWARE_MODULE_API_VERSION(0, 1)
 #define POWER_MODULE_API_VERSION_0_2  HARDWARE_MODULE_API_VERSION(0, 2)
+
 
 /**
  * The id of this module
@@ -42,13 +41,8 @@ __BEGIN_DECLS
 typedef enum {
     POWER_HINT_VSYNC = 0x00000001,
     POWER_HINT_INTERACTION = 0x00000002,
-    /* DO NOT USE POWER_HINT_VIDEO_ENCODE/_DECODE!  They will be removed in
-     * KLP.
-     */
     POWER_HINT_VIDEO_ENCODE = 0x00000003,
-    POWER_HINT_VIDEO_DECODE = 0x00000004,
-
-    POWER_HINT_CPU_BOOST = 0x00000010
+    POWER_HINT_CPU_BOOST = 0x00000004,
 } power_hint_t;
 
 /**

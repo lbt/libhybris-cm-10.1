@@ -78,7 +78,6 @@ enum {
      * by SurfaceFlinger (just as if compositionType was set to HWC_OVERLAY).
      */
     HWC_SKIP_LAYER = 0x00000001,
-    HWC_SCREENSHOT_ANIMATOR_LAYER = 0x00000002,
 };
 
 /*
@@ -181,16 +180,13 @@ enum {
 /* Allowed events for hwc_methods::eventControl() */
 enum {
     HWC_EVENT_VSYNC     = 0,
-    HWC_EVENT_ORIENTATION
+    HWC_EVENT_ORIENTATION    // To notify HWC about the device orientation
 };
 
 /* Display types and associated mask bits. */
 enum {
     HWC_DISPLAY_PRIMARY     = 0,
     HWC_DISPLAY_EXTERNAL    = 1,    // HDMI, DP, etc.
-#ifdef QCOM_HARDWARE
-    HWC_DISPLAY_VIRTUAL     = 2,    // WFD etc.
-#endif
     HWC_NUM_DISPLAY_TYPES
 };
 
