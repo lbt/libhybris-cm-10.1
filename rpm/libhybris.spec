@@ -1,4 +1,4 @@
-Name:      libhybris-cm-10.2
+Name:      libhybris-cm-10.1
 Version:   0.0.0
 Release:   1%{?dist}
 Summary:   Utilize Bionic-based HW adaptations on glibc systems
@@ -9,6 +9,9 @@ URL:	   https://github.com/libhybris/libhybris
 Source:    %{name}-%{version}.tar.bz2
 BuildRequires: libtool
 BuildRequires: pkgconfig(wayland-client)
+# When droid-hal-ha builds for a specific HA it should provide
+# droid-hal-devel via droid-hal-%{device}-devel package
+#BuildRequires: droid-hal-devel
 Conflicts: mesa-llvmpipe
 
 %description
@@ -331,7 +334,8 @@ autoreconf -v -f -i
   --enable-debug \
   --enable-trace \
   --with-android-headers=$(pwd)/../../android-headers \
-  --enable-arch=arm
+  --enable-arch=arm \
+  --with-default-hybris-ld-library-path=/usr/libexec/droid-hybris/system/lib/:/vendor/lib:/system/lib
 
 make
 
@@ -391,6 +395,7 @@ rm %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/libhybris/*.la
 %defattr(-,root,root,-)
 %{_includedir}/hybris/input/*.h
 %{_includedir}/hybris/properties/properties.h
+%{_includedir}/hybris/dlfcn/dlfcn.h
 %{_libdir}/libhybris-common.so
 %{_libdir}/libandroid-properties.so
 
