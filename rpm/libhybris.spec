@@ -331,8 +331,8 @@ cd libhybris/hybris
 autoreconf -v -f -i
 %configure \
   --enable-wayland \
-  --enable-debug \
-  --enable-trace \
+  %{!?qa_stage_devel:--enable-debug} \
+  %{!?qa_stage_devel:--enable-trace} \
   --with-android-headers=$(pwd)/../../android-headers \
   --enable-arch=arm \
   --with-default-hybris-ld-library-path=/usr/libexec/droid-hybris/system/lib/:/vendor/lib:/system/lib
