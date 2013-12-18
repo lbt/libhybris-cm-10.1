@@ -11,7 +11,7 @@ BuildRequires: libtool
 BuildRequires: pkgconfig(wayland-client)
 # When droid-hal-ha builds for a specific HA it should provide
 # droid-hal-devel via droid-hal-%{device}-devel package
-#BuildRequires: droid-hal-devel
+BuildRequires: droid-hal-devel
 Conflicts: mesa-llvmpipe
 
 %description
@@ -333,7 +333,7 @@ autoreconf -v -f -i
   --enable-wayland \
   %{!?qa_stage_devel:--enable-debug} \
   %{!?qa_stage_devel:--enable-trace} \
-  --with-android-headers=$(pwd)/../../android-headers \
+  --with-android-headers=/usr/lib/droid-devel/droid-headers/ \
   --enable-arch=arm \
   --with-default-hybris-ld-library-path=/usr/libexec/droid-hybris/system/lib/:/vendor/lib:/system/lib
 
@@ -398,6 +398,7 @@ rm %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/libhybris/*.la
 %{_includedir}/hybris/dlfcn/dlfcn.h
 %{_libdir}/libhybris-common.so
 %{_libdir}/libandroid-properties.so
+%{_libdir}/pkgconfig/libandroid-properties.pc
 
 
 %files libEGL
@@ -496,7 +497,7 @@ rm %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/libhybris/*.la
 %defattr(-,root,root,-)
 %{_libdir}/libsf.so
 %{_includedir}/hybris/surface_flinger/surface_flinger_compatibility_layer.h
-
+%{_libdir}/pkgconfig/libsf.pc
 
 %files libcamera
 %defattr(-,root,root,-)
@@ -506,6 +507,7 @@ rm %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/libhybris/*.la
 %defattr(-,root,root,-)
 %{_libdir}/libcamera.so
 %{_includedir}/hybris/camera/*.h
+%{_libdir}/pkgconfig/libcamera.pc
 
 %files libis
 %defattr(-,root,root,-)
@@ -514,6 +516,7 @@ rm %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/libhybris/*.la
 %files libis-devel
 %defattr(-,root,root,-)
 %{_libdir}/libis.so
+%{_libdir}/pkgconfig/libis.pc
 
 %files libsync
 %defattr(-,root,root,-)
